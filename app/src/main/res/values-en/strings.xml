@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- LoadFileActivity String -->
+    <string name="loadfile_loading_title">Loading</string>
+    <string name="loadfile_select_recent_file">Open recent database file</string>
+    <string name="loadfile_create_file">Create a new database</string>
+    <string name="loadfile_error_creating_database">Could not create database</string>
+    <string name="loadfile_error_loading_recent_databases">Could not load recent databases list</string>
+    <string name="loadfile_cretate_database_dialog_title">Create a database</string>
+    <string name="loadfile_cretate_database_dialog_message">Set database name and passwoerd</string>
+    <string name="loadfile_cretate_database_dialog_database">Database</string>
+    <string name="loadfile_open_database_dialog_title">Open Databse</string>
+    <string name="loadfile_open_database_dialog_database">Set password</string>
+    <string name="loadfile_delete_database_dialog_title">Delete database</string>
+    <string name="loadfile_delete_database_dialog_database">You sure want to delete the database %1$s?</string>
+    <string name="loadfile_delete_database_toast_message">Database %1$s was deleted</string>
+    <string name="loadfile_create_database_toast_message">Database %1$s was created</string>
+    <string name="loadfile_error_deleting_databases">Could not delete database</string>
+
+    <!-- Common Strings -->
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Canceŀ</string>
+    <string name="search_icon_title">Search</string>
+
+    <!-- Permission Strings -->
+    <string name="permission_denied">Without storage permission, ti will not be possible to save or open databases</string>
+
+    <!-- Strings for customizing the Passcode Lock interface -->
+    <string name="cd_passcodelock_logo">PasscodeLock Logo</string>
+    <string name="passcode_fingerprint_supported">Fingerprint Supported</string>
+    <string name="passcode_change_passcode">Change passcode</string>
+    <string name="passcode_enter_old_passcode">Enter old passcode</string>
+    <string name="passcode_re_enter_passcode">Enter passcode again</string>
+    <string name="passcode_turn_off">Disable lock</string>
+    <string name="passcode_turn_on">Enable lock</string>
+    <string name="passcode_wrong_passcode">Wrong passcode.</string>
+    <string name="passcodelock_prompt_message">Enter passcode</string>
+
+    <!-- Generate Password Strings -->
+    <string name="generatepassword_title">Create Password</string>
+    <string name="generatepassword_length">Password length</string>
+    <string name="generatepassword_punctuation">Punctuation</string>
+    <string name="generatepassword_upper">Upper Case</string>
+    <string name="generatepassword_lower">Lower Case</string>
+    <string name="generatepassword_numbers">Numbers</string>
+    <string name="generatedpassword_generated_password">Contrasenya</string>
+</resources>

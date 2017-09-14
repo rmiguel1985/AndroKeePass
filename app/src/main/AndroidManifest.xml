@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.adictosalainformatica.androkeepass">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.adictosalainformatica.AndroKeePassApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".features.loadfile.presentation.view.activity.LoadFileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".features.pin.view.PinLockPreferenceActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".features.loadfile.presentation.view.activity.LoadFileActivity"
+            android:theme="@style/AppTheme" />
+
+        <!-- Passcode Lock Activities -->
+        <activity
+            android:name="org.wordpress.passcodelock.PasscodeManagePasswordActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.wordpress.passcodelock.PasscodeUnlockActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".features.loadfile.presentation.view.activity.CreateDatabaseActivity"
+            android:theme="@style/DialogTheme" />
+        <activity android:name=".features.loadfile.presentation.view.activity.GeneratePasswordActivity"></activity>
+    </application>
+
+</manifest>
