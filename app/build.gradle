@@ -5,7 +5,7 @@ def keePassVersion = "0.6.0"
 def daggerVersion = '2.9'
 def injectAnnotationsVersion = '1.0'
 def butterKnifeVersion = '8.5.1'
-def supportLibraryVersion = '25.3.0'
+def supportLibraryVersion = '26.+'
 def rxJavaVersion = '1.1.9'
 def rxAndroidVersion = '1.2.1'
 def dexterVersion = '4.0.0'
@@ -18,8 +18,8 @@ def passCodeLockVersion = '1.+'
 def mockitoVersion = '1.10.19'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.adictosalainformatica.androkeepass"
         minSdkVersion 21
