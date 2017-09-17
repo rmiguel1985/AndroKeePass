@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply from: 'coverage/jacoco.gradle'
+apply from: 'coverage/coveralls.gradle'
 
 def keePassVersion = "0.6.0"
 def daggerVersion = '2.9'
