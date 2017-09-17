@@ -1,6 +1,6 @@
 # AndroKeePass (under development)
 
-KeePass Android App supporting **KeePass 2.x database files**.
+KeePass Android App supporting **KeePass 2.x database files**. [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59bef652c39a4a00012abbb4&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/59bef652c39a4a00012abbb4/build/latest?branch=develop)
 
 Security
 --------
