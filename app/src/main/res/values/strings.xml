@@ -26,6 +26,7 @@
     <string name="search_icon_title">Cerca</string>
     <string name="action_settings">Settings</string>
     <string name="preferences_header_security">Security</string>
+    <string name="loadfile_create_database_button">Crear</string>
 
     <!-- Permission Strings -->
     <string name="permission_denied">Sense el permís per guardar a disc, no es poden crear ni obrir bases de dades</string>
@@ -49,5 +50,4 @@
     <string name="generatepassword_lower">Minúscules</string>
     <string name="generatepassword_numbers">Números</string>
     <string name="generatedpassword_generated_password">Contrasenya</string>
-
 </resources>

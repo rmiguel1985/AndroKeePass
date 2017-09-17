@@ -73,7 +73,7 @@ public class LoadFileActivityTest {
         onView(withHint(context.getString(R.string.repeat_password))).perform(typeText("1234"),
                 closeSoftKeyboard());
 
-        onView(withText(context.getString(R.string.ok))).perform(click());
+        onView(withText(context.getString(R.string.loadfile_create_database_button))).perform(click());
 
         onView(withText(context.getString(R.string.loadfile_create_database_toast_message, databaseName)))
                 .inRoot(withDecorView(not(activityRule.getActivity().getWindow().getDecorView())))

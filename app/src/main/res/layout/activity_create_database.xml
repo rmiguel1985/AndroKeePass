@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:text="@string/ok"
+        android:text="@string/loadfile_create_database_button"
         android:layout_alignBaseline="@+id/button"
         android:layout_alignBottom="@+id/button"
         android:layout_alignEnd="@+id/create_database_txt_password_repeat" />
