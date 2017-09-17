@@ -284,11 +284,6 @@ public class LoadFileActivity extends BasePresenterActivity<LoadFilePresenter> i
     }
 
     @Override
-    public void showErrorLoadingRecentDatabasesList() {
-        DialogUtils.createErrorDialog(context,  getString(R.string.loadfile_error_loading_recent_databases));
-    }
-
-    @Override
     public void showErrorDeletingDatabase() {
         DialogUtils.createErrorDialog(context,  getString(R.string.loadfile_error_deleting_databases));
     }

@@ -161,7 +161,6 @@ public class LoadFilePresenterImpl implements LoadFilePresenter{
             super.onError(e);
             Timber.e("Error loading recent databases: " + e.getMessage());
             view.hideProgress();
-            //view.showErrorLoadingRecentDatabasesList();
         }
 
         @Override

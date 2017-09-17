@@ -215,7 +215,6 @@ public class LoadFilePresenterImpTest {
         verify(view).showProgress();
 
         //Then
-        verify(view).showErrorLoadingRecentDatabasesList();
         verify(view).hideProgress();
     }
 

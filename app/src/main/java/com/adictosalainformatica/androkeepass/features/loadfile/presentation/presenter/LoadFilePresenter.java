@@ -41,8 +41,6 @@ public interface LoadFilePresenter extends BasePresenter<LoadFilePresenter.View>
 
         void showErrorCreatingDatabase();
 
-        void showErrorLoadingRecentDatabasesList();
-
         void showErrorDeletingDatabase();
     }
 
