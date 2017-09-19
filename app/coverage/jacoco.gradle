@@ -16,6 +16,7 @@ task jacocoTestReport(type:JacocoReport, dependsOn: "testDebugUnitTest") {
             dir: "$buildDir/intermediates/classes/debug",
             excludes: ['**/R.class',
                        '**/R$*.class',
+                       '**/*$ViewInjector*.*',
                        '**/*$ViewBinder*.*',
                        '**/*$InjectAdapter*.*',
                        '**/*Injector*.*',
@@ -23,7 +24,7 @@ task jacocoTestReport(type:JacocoReport, dependsOn: "testDebugUnitTest") {
                        '**/Manifest*.*',
                        '**/*Test*.*',
                        '**/*Activity*.*',
-                       '**/CiMattersApplication*.*',
+                       '**/AndroKeePassApplication*.*',
                        'android/**/*.*',
                        '**/Lambda$*.class', //Retrolambda
                        '**/Lambda.class',
