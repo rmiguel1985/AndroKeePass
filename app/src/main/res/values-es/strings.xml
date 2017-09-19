@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">AndroKeePass</string>
+
     <!-- LoadFileActivity String -->
     <string name="loadfile_loading_title">Cargando</string>
     <string name="loadfile_select_recent_file">Abre una base de datos reciente</string>
@@ -24,6 +26,8 @@
     <string name="ok">Ok</string>
     <string name="cancel">Canceŀar</string>
     <string name="search_icon_title">Buscar</string>
+    <string name="action_settings">Opciones</string>
+    <string name="preferences_header_security">Seguridad</string>
     <string name="loadfile_create_database_button">Crear</string>
 
     <!-- Permission Strings -->

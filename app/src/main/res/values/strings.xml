@@ -24,8 +24,8 @@
     <string name="ok">D\'acord</string>
     <string name="cancel">Canceŀlar</string>
     <string name="search_icon_title">Cerca</string>
-    <string name="action_settings">Settings</string>
-    <string name="preferences_header_security">Security</string>
+    <string name="action_settings">Opcions</string>
+    <string name="preferences_header_security">Seguretat</string>
     <string name="loadfile_create_database_button">Crear</string>
 
     <!-- Permission Strings -->
