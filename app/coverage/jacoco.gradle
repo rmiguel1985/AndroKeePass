@@ -24,7 +24,19 @@ task jacocoTestReport(type:JacocoReport, dependsOn: "testDebugUnitTest") {
                        '**/*Test*.*',
                        '**/*Activity*.*',
                        '**/CiMattersApplication*.*',
-                       'android/**/*.*']
+                       'android/**/*.*',
+                       '**/Lambda$*.class', //Retrolambda
+                       '**/Lambda.class',
+                       '**/*Lambda.class',
+                       '**/*Lambda*.class',
+                       '**/*Lambda*.*',
+                       '**/*Builder.*',
+                       '**/*_MembersInjector.class', //Dagger2 generated code
+                       '**/*_MembersInjector*.*', //Dagger2 generated code
+                       '**/*_*Factory*.*', //Dagger2 generated code
+                       '**/*Component*.*', //Dagger2 generated code
+                       '**/*Module*.*' //Dagger2 generated code
+            ]
     )
     if (project.hasProperty("teamcity")) {
         println '##teamcity[jacocoReport dataPath=\'app/build/jacoco/testDebugUnitTest.exec\' includes=\'com.vgaidarji.cimatters.*\' excludes=\'com.vgaidarji.cimatters.test.* **/*R*.* **/*Injector*.* **/*Activity*.* .*R .*CiMattersApplication .*BuildConfig .*Activity .*Test \']'
