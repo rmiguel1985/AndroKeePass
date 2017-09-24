@@ -97,13 +97,13 @@ public class GeneratePasswordActivity extends AppCompatActivity {
     }
 
     private void generatePassword(){
-        String password = new PasswordGenerator()
+        String password = new PasswordGenerator
+                .PasswordGeneratorBuilder()
                 .useDigits(numbersCheckBox.isChecked())
                 .useLower(lowerCaseCheckBox.isChecked())
                 .useUpper(upperCaseCheckBox.isChecked())
                 .usePunctuation(punctuationCheckBox.isChecked())
-                .setLength(passwordLengthProgressBar.getProgress() + 1)
-                .build();
+                .build().generate(passwordLengthProgressBar.getProgress() + 1);
 
         generatedPasswordTextView.setText(getString(R.string.generatedpassword_generated_password)
                 + ": " + password);
