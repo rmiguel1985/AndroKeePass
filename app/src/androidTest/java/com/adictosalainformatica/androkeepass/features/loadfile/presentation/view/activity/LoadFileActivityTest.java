@@ -82,7 +82,7 @@ public class LoadFileActivityTest {
 
     @Test
     public void deleteDatabase_deletes_expected_database() throws Exception {
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
         onView(withRecyclerView(R.id.loadfile_recycler_view_recents_databases)
                 .atPositionOnView(0, R.id.loadfile_textview_database_list_item))
