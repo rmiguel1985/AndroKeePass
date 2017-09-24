@@ -32,6 +32,8 @@ android {
     }
     buildTypes {
         debug {
+            debuggable true
+            minifyEnabled false
             testCoverageEnabled true
         }
         release {
@@ -47,8 +49,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     testOptions {
-        unitTests {
-            returnDefaultValues = true
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
         }
     }
 }

@@ -1,67 +1,42 @@
 apply plugin: 'jacoco'
 
-ext {
-    coverageSourceDirs = 'src/test/java'
-}
-
 jacoco {
-    toolVersion = "0.7.5.201505241946"
-    reportsDir = file("$buildDir/reports")
+    toolVersion "0.7.6.201602180812"
+//    toolVersion = "0.7.4.201502262128"
 }
+// run ./gradlew clean createDebugCoverageReport jacocoTestReport
 
-task jacocoTestReport(type:JacocoReport, dependsOn: "testDebugUnitTest") {
+task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
     group = "Reporting"
-    description = "Generate Jacoco coverage reports for Debug build"
-    classDirectories = fileTree(
-            dir: "$buildDir/intermediates/classes/debug",
-            excludes: ['**/R.class',
-                       '**/R$*.class',
-                       '**/*$ViewInjector*.*',
-                       '**/*$ViewBinder*.*',
-                       '**/*$InjectAdapter*.*',
-                       '**/*Injector*.*',
-                       '**/BuildConfig.*',
-                       '**/Manifest*.*',
-                       '**/*Test*.*',
-                       '**/*Activity*.*',
-                       '**/AndroKeePassApplication*.*',
-                       'android/**/*.*',
-                       '**/Lambda$*.class', //Retrolambda
-                       '**/Lambda.class',
-                       '**/*Lambda.class',
-                       '**/*Lambda*.class',
-                       '**/*Lambda*.*',
-                       '**/*Builder.*',
-                       '**/*_MembersInjector.class', //Dagger2 generated code
-                       '**/*_MembersInjector*.*', //Dagger2 generated code
-                       '**/*_*Factory*.*', //Dagger2 generated code
-                       '**/*Component*.*', //Dagger2 generated code
-                       '**/*Module*.*' //Dagger2 generated code
-            ]
-    )
-    if (project.hasProperty("teamcity")) {
-        println '##teamcity[jacocoReport dataPath=\'app/build/jacoco/testDebugUnitTest.exec\' includes=\'com.vgaidarji.cimatters.*\' excludes=\'com.vgaidarji.cimatters.test.* **/*R*.* **/*Injector*.* **/*Activity*.* .*R .*CiMattersApplication .*BuildConfig .*Activity .*Test \']'
-    }
+    description = "Generate Jacoco coverage reports"
+
     reports {
         xml.enabled = true
         html.enabled = true
     }
-    additionalSourceDirs = files(coverageSourceDirs)
-    sourceDirectories = files(coverageSourceDirs)
-    executionData = files("$buildDir/jacoco/testDebugUnitTest.exec")
-    // Bit hacky but fixes https://code.google.com/p/android/issues/detail?id=69174.
-    // We iterate through the compiled .class tree and rename $$ to $.
-    doFirst {
-        new File("$buildDir/intermediates/classes/").eachFileRecurse { file ->
-            if (file.name.contains('$$')) {
-                file.renameTo(file.path.replace('$$', '$'))
-            }
-        }
-    }
-}
 
-tasks.withType(Test) {
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
+    def fileFilter = ['**/R.class',
+                      '**/R$*.class',
+                      '**/BuildConfig.*',
+                      '**/Manifest*.*',
+                      'android/**/*.*',
+                      '**/Lambda$*.class', //Retrolambda
+                      '**/Lambda.class',
+                      '**/*Lambda.class',
+                      '**/*Lambda*.class',
+                      '**/*Lambda*.*',
+                      '**/*Builder.*',
+                      '**/*_MembersInjector.class',  //Dagger2 generated code
+                      '**/*_MembersInjector*.*',  //Dagger2 generated code
+                      '**/*_*Factory*.*', //Dagger2 generated code
+                      '**/*Component*.*', //Dagger2 generated code
+                      '**/*Module*.*' //Dagger2 generated code
+    ]
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    sourceDirectories = files([mainSrc])
+    classDirectories = files([debugTree])
+    executionData = fileTree(dir: project.projectDir, includes:
+            ['**/*.exec' , '**/*.ec'])
 }
