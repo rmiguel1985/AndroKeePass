@@ -2,5 +2,5 @@ apply plugin: 'com.github.kt3k.coveralls'
 
 coveralls {
     sourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs).files.absolutePath
-    jacocoReportPath = "${buildDir}/reports/jacocoTestReport/jacocoTestReport.xml"
+    jacocoReportPath = "${buildDir}/reports/jacocoTestReport/jacoco/jacocoTestReport.xml"
 }
