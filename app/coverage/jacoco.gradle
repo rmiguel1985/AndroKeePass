@@ -39,4 +39,10 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
     classDirectories = files([debugTree])
     executionData = fileTree(dir: project.projectDir, includes:
             ['**/*.exec' , '**/*.ec'])
+
+    tasks.withType(Test) {
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
 }
