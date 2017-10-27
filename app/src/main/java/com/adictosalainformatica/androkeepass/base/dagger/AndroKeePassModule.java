@@ -20,6 +20,9 @@ import android.app.Application;
 import android.content.Context;
 
 import com.github.javiersantos.piracychecker.PiracyChecker;
+import com.scottyab.rootbeer.RootBeer;
+import com.sromku.simple.storage.SimpleStorage;
+import com.sromku.simple.storage.Storage;
 
 import javax.inject.Singleton;
 
@@ -41,7 +44,28 @@ public class AndroKeePassModule {
     }
 
     @Provides
+    @Singleton
     public PiracyChecker providesPiracyChecker(Context context){
         return new PiracyChecker(context);
+    }
+
+    @Provides
+    @Singleton
+    public RootBeer providesRootBeer(Context context){
+        return new RootBeer(context);
+    }
+
+    @Provides
+    @Singleton
+    Storage providesSimpleStorage(Context context){
+        Storage storage;
+        if (SimpleStorage.isExternalStorageWritable()) {
+            storage = SimpleStorage.getExternalStorage();
+        }
+        else {
+            storage = SimpleStorage.getInternalStorage(context);
+        }
+
+        return storage;
     }
 }
