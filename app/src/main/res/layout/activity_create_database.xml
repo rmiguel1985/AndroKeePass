@@ -3,17 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/include" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/create_database_generate_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
         android:background="@null"
-        android:text="@string/ok"
-        android:layout_below="@+id/create_database_txt_password_repeat"
-        android:layout_alignStart="@+id/textView" />
+        android:text="@string/generatepassword_generate"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/etPasswordLayoutRepeat"
+        android:layout_alignStart="@+id/create_database_button" />
 
     <TextView
         android:id="@+id/textView2"
@@ -52,9 +56,9 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:text="@string/loadfile_create_database_button"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
-        android:layout_alignEnd="@+id/create_database_txt_password_repeat" />
+        android:layout_alignTop="@+id/create_database_generate_button"
+        android:layout_alignStart="@+id/etPasswordLayoutRepeat"
+        android:layout_marginTop="51dp" />
 
     <EditText
         android:id="@+id/create_database_txt_name"
@@ -68,28 +72,50 @@
         android:hint="@string/loadfile_cretate_database_dialog_database"
         android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/create_database_txt_password_repeat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/create_database_txt_password"
-        android:layout_alignStart="@+id/create_database_txt_name"
-        android:layout_below="@+id/create_database_txt_password"
-        android:layout_marginTop="31dp"
-        android:ems="10"
-        android:hint="@string/repeat_password"
-        android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/create_database_txt_password"
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/etPasswordLayoutRepeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/create_database_txt_name"
         android:layout_alignStart="@+id/create_database_txt_name"
+        android:layout_below="@+id/etPasswordLayout"
+        android:layout_marginTop="30dp"
+        app:passwordToggleEnabled="true"
+        android:layout_alignEnd="@+id/etPasswordLayout">
+
+        <EditText
+            android:id="@+id/create_database_txt_password_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/repeat_password"
+            android:inputType="textPassword"
+            android:layout_alignEnd="@+id/create_database_txt_password" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/etPasswordLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/create_database_txt_name"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:layout_alignStart="@+id/create_database_txt_name"
+        android:layout_marginTop="30dp"
+        app:passwordToggleEnabled="true"
+        android:layout_alignEnd="@+id/create_database_txt_name">
+
+        <EditText
+            android:id="@+id/create_database_txt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layout_alignEnd="@+id/create_database_txt_name" />
+    </android.support.design.widget.TextInputLayout>
+
+
+
 
 </RelativeLayout>
