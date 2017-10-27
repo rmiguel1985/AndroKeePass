@@ -16,6 +16,8 @@
 
 package com.adictosalainformatica.androkeepass.utils;
 
+import com.adictosalainformatica.androkeepass.utils.password.PasswordGenerator;
+
 import junit.framework.Assert;
 
 import org.junit.After;

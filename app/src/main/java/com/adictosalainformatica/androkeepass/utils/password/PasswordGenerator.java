@@ -14,7 +14,7 @@
  *      0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-package com.adictosalainformatica.androkeepass.utils;
+package com.adictosalainformatica.androkeepass.utils.password;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,6 +151,10 @@ public final class PasswordGenerator {
         }
         if (usePunctuation) {
             charCategories.add(PUNCTUATION);
+        }
+
+        if (charCategories.isEmpty()){
+            charCategories.add(LOWER);
         }
 
         // Build the password.
