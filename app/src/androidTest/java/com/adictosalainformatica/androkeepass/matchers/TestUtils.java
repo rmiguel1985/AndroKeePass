@@ -8,6 +8,7 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.espresso.util.HumanReadables;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.SeekBar;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
@@ -104,5 +105,22 @@ public class TestUtils {
         return new RecyclerViewMatcher(recyclerViewId);
     }
 
+    public static ViewAction setProgress(final int progress) {
+        return new ViewAction() {
+            @Override
+            public void perform(UiController uiController, View view) {
+                SeekBar seekBar = (SeekBar) view;
+                seekBar.setProgress(progress);
+            }
+            @Override
+            public String getDescription() {
+                return "Set a progress on a SeekBar";
+            }
+            @Override
+            public Matcher<View> getConstraints() {
+                return ViewMatchers.isAssignableFrom(SeekBar.class);
+            }
+        };
+    }
 }
 
