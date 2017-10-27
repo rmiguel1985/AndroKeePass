@@ -16,10 +16,9 @@
 
 package com.adictosalainformatica.androkeepass.features.loadfile.dagger;
 
-import android.content.Context;
-
 import com.adictosalainformatica.androkeepass.features.loadfile.data.repository.DatabaseRepository;
 import com.adictosalainformatica.androkeepass.features.loadfile.data.repository.impl.DatabaseRepositoryImpl;
+import com.sromku.simple.storage.Storage;
 
 import dagger.Module;
 import dagger.Provides;
@@ -27,7 +26,7 @@ import dagger.Provides;
 @Module
 public class LoadFileRepositoriesModule {
     @Provides
-    public DatabaseRepository providesDatabaseRepository(Context context){
-        return new DatabaseRepositoryImpl(context);
+    public DatabaseRepository providesDatabaseRepository(Storage storage){
+        return new DatabaseRepositoryImpl(storage);
     }
 }
