@@ -19,6 +19,7 @@ package com.adictosalainformatica;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.adictosalainformatica.androkeepass.BuildConfig;
 import com.adictosalainformatica.androkeepass.base.BaseApplication;
@@ -29,6 +30,7 @@ import com.github.javiersantos.piracychecker.PiracyChecker;
 import com.github.javiersantos.piracychecker.enums.PiracyCheckerCallback;
 import com.github.javiersantos.piracychecker.enums.PiracyCheckerError;
 import com.github.javiersantos.piracychecker.enums.PirateApp;
+import com.scottyab.rootbeer.RootBeer;
 import com.squareup.leakcanary.LeakCanary;
 
 import org.wordpress.passcodelock.AppLockManager;
@@ -40,7 +42,10 @@ import timber.log.Timber;
 public class AndroKeePassApplication extends BaseApplication {
 
     private static AndroKeePassComponent daggerAndroKeePassComponent;
-    @Inject PiracyChecker piracyChecker;
+    @Inject
+    PiracyChecker piracyChecker;
+    @Inject
+    RootBeer rootBeer;
 
     @Override
     public void onCreate() {
@@ -79,7 +84,6 @@ public class AndroKeePassApplication extends BaseApplication {
      *
      */
     @Override
-    @Inject
     protected void initializeSecurity() {
         AppLockManager.getInstance().enableDefaultAppLockIfAvailable(this);
         if (!isDebugBuild()) {
@@ -89,7 +93,13 @@ public class AndroKeePassApplication extends BaseApplication {
                     .enableSigningCertificate("")
                     .callback(new PiracyCheckerCallback() {
                         @Override
-                        public void allow() {}
+                        public void allow() {
+                            if(rootBeer.isRootedWithoutBusyBoxCheck()){
+                                Toast.makeText(getApplicationContext(),
+                                        "Device is rooted, it will incurs in security issues. Don't grant full access to any app",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
 
                         @Override
                         public void dontAllow(@NonNull PiracyCheckerError error, @Nullable PirateApp app) {
