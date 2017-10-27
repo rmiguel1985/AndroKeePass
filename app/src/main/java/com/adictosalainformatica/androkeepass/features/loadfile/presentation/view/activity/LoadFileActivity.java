@@ -42,7 +42,7 @@ import com.adictosalainformatica.androkeepass.features.loadfile.presentation.pre
 import com.adictosalainformatica.androkeepass.features.loadfile.presentation.view.activity.adapter.DatabaseListAdapter;
 import com.adictosalainformatica.androkeepass.features.pin.view.PinLockPreferenceActivity;
 import com.adictosalainformatica.androkeepass.utils.dialog.DialogUtils;
-import com.adictosalainformatica.androkeepass.utils.dialog.DialogUtilsManageDatabaseListener;
+import com.adictosalainformatica.androkeepass.utils.dialog.DialogUtilsListener;
 import com.adictosalainformatica.androkeepass.utils.recyclerview.DividerItemDecoration;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -72,7 +72,7 @@ import static com.adictosalainformatica.AndroKeePassApplication.getDaggerCompone
 public class LoadFileActivity extends BasePresenterActivity<LoadFilePresenter> implements
         LoadFilePresenter.View, DatabaseListAdapter.OnDatabaseListItemClickedListener,
         DatabaseListAdapter.OnDatabaseListItemLongClickedListener,
-        DialogUtilsManageDatabaseListener {
+        DialogUtilsListener {
 
     private static final int CREATE_DATABASE_DIALOG = 1000;
     @Inject LoadFilePresenter loadFilePresenter;
@@ -257,8 +257,6 @@ public class LoadFileActivity extends BasePresenterActivity<LoadFilePresenter> i
 
     @Override
     public void onDatabaseListFiltered(List<Database> databaseList) {
-        //this.databaseList = databaseList;
-        Timber.d( "databases");
         Timber.d( "database: " + databaseList.get(0).getDatabaseName());
         adapter.setDatabases(databaseList);
     }
@@ -334,20 +332,37 @@ public class LoadFileActivity extends BasePresenterActivity<LoadFilePresenter> i
     @Override
     public void onOpenDatabaseDialogClicked(Database database) {
         Timber.d("Open database click: " + database.getDatabaseName());
-        //database.setPassword(password);
-
         Timber.d("path" + database.getDatabasePath() + " - " + database.getPassword());
 
-        KeePassFile databaseInstance = KeePassDatabase.getInstance(database.getDatabasePath()).openDatabase(database.getPassword());
+        try{
+            KeePassFile databaseInstance =
+                    KeePassDatabase.getInstance(database.getDatabasePath()).
+                            openDatabase(database.getPassword());
 
-        List<Group> groups = databaseInstance.getTopGroups();
-        for (Group group : groups) {
-            Timber.d("Group:" + group.getName());
+            String databaseValues = "";
 
-            for(Entry entry: group.getEntries()){
-                Timber.d( "Title: " + entry.getTitle() + " - " + "Name: " + entry.getUsername() + " - "  + " Password: " + entry.getPassword());
+            List<Group> groups = databaseInstance.getTopGroups();
+            for (Group group : groups) {
+                Timber.d("Group: " + group.getName());
+
+                databaseValues += "Group: " + group.getName();
+
+                for(Entry entry: group.getEntries()){
+                    Timber.d( "Title: " + entry.getTitle() +
+                            " - " + "Name: " + entry.getUsername() +
+                            " - "  + " Password: " + entry.getPassword());
+                    databaseValues += "\nTitle: " + entry.getTitle() +
+                            "\n " + "Name: " + entry.getUsername() +
+                            "\n "  + "Password: " + entry.getPassword()+ "\n";
+                }
+
+                DialogUtils.createInfoDialog(this, databaseValues);
             }
+        }catch (Exception ex){
+            Timber.e(ex.getMessage());
+            DialogUtils.createErrorDialog(context, "Error openenig database");
         }
+
     }
 
     @Override
