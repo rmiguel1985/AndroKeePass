@@ -18,7 +18,7 @@ package com.adictosalainformatica.androkeepass.utils.dialog;
 
 import com.adictosalainformatica.androkeepass.features.loadfile.domain.model.Database;
 
-public interface DialogUtilsManageDatabaseListener {
+public interface DialogUtilsListener {
     void onOpenDatabaseDialogClicked(Database database);
     void onDeleteDatabaseDialogClicked(String databaseName);
 }
