@@ -16,6 +16,7 @@
 
 package com.adictosalainformatica.androkeepass.features.loadfile.dagger;
 
+import com.adictosalainformatica.androkeepass.base.dagger.scopes.PerActivity;
 import com.adictosalainformatica.androkeepass.features.loadfile.domain.usecases.CreateDatabaseUseCase;
 import com.adictosalainformatica.androkeepass.features.loadfile.domain.usecases.DeleteDatabaseUseCase;
 import com.adictosalainformatica.androkeepass.features.loadfile.domain.usecases.GetDatabasesUseCase;
@@ -28,6 +29,7 @@ import dagger.Provides;
 @Module
 public class LoadFilePresenterModule {
     @Provides
+    @PerActivity
     public LoadFilePresenter providesLoadFilePresenter(CreateDatabaseUseCase createDatabaseUseCase,
                                                        GetDatabasesUseCase getDatabasesUseCase,
                                                        DeleteDatabaseUseCase deleteDatabaseUseCase){

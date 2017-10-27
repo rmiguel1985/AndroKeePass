@@ -16,11 +16,12 @@
 
 package com.adictosalainformatica.androkeepass.features.loadfile.dagger;
 
+import com.adictosalainformatica.androkeepass.base.dagger.scopes.PerActivity;
 import com.adictosalainformatica.androkeepass.features.loadfile.presentation.view.activity.LoadFileActivity;
 
 import dagger.Subcomponent;
 
-
+@PerActivity
 @Subcomponent(modules={
         LoadFilePresenterModule.class,
         LoadFileUsesCaseModule.class,
