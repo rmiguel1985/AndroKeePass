@@ -18,6 +18,8 @@
     <string name="loadfile_delete_database_toast_message">Database %1$s was deleted</string>
     <string name="loadfile_create_database_toast_message">Database %1$s was created</string>
     <string name="loadfile_error_deleting_databases">Could not delete database</string>
+    <string name="loadfile_cretate_database_password_error">Passwords are not equals or are too short</string>
+    <string name="loadfile_cretate_database_database_name_error">Database name is too short</string>
 
     <!-- Common Strings -->
     <string name="password">Password</string>
@@ -27,7 +29,7 @@
     <string name="search_icon_title">Search</string>
     <string name="action_settings">Settings</string>
     <string name="preferences_header_security">Security</string>
-    <string name="loadfile_create_database_button">Create</string>
+    <string name="loadfile_create_database_button">Create database</string>
 
     <!-- Permission Strings -->
     <string name="permission_denied">Without storage permission, ti will not be possible to save or open databases</string>
@@ -50,5 +52,8 @@
     <string name="generatepassword_upper">Upper Case</string>
     <string name="generatepassword_lower">Lower Case</string>
     <string name="generatepassword_numbers">Numbers</string>
-    <string name="generatedpassword_generated_password">Contrasenya</string>
+    <string name="generatedpassword_generated_password">Password</string>
+    <string name="generatepassword_generate">Generate Password</string>
+    <string name="generatepassword_use">Use Password</string>
+    <string name="generatepassword_generate_dialog_message">Use option to create a random password</string>
 </resources>

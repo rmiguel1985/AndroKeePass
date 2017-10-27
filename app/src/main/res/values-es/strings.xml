@@ -18,7 +18,8 @@
     <string name="loadfile_delete_database_toast_message">Se ha borrado la base de datos %1$s</string>
     <string name="loadfile_create_database_toast_message">Se ha creado la base de datos %1$s</string>
     <string name="loadfile_error_deleting_databases">No se ha podido borrar la base de datos</string>
-
+    <string name="loadfile_cretate_database_password_error">Las contraseña no son iguales o son demasiado cortas</string>
+    <string name="loadfile_cretate_database_database_name_error">El nombre de la base de datos es demasiado corto</string>
 
     <!-- Common Strings -->
     <string name="password">Contraseña</string>
@@ -28,7 +29,7 @@
     <string name="search_icon_title">Buscar</string>
     <string name="action_settings">Opciones</string>
     <string name="preferences_header_security">Seguridad</string>
-    <string name="loadfile_create_database_button">Crear</string>
+    <string name="loadfile_create_database_button">Crear base de datos</string>
 
     <!-- Permission Strings -->
     <string name="permission_denied">Sin el permiso para acceder a disco, no se pueden crear ni abrir bases de datos</string>
@@ -51,5 +52,8 @@
     <string name="generatepassword_upper">Mayusculas</string>
     <string name="generatepassword_lower">Minúsculas</string>
     <string name="generatepassword_numbers">Numeros</string>
-    <string name="generatedpassword_generated_password">Contrasenya</string>
+    <string name="generatedpassword_generated_password">Contraseña</string>
+    <string name="generatepassword_generate">Generar contraseña</string>
+    <string name="generatepassword_use">Utilizar contraseña</string>
+    <string name="generatepassword_generate_dialog_message">Utilitza las opciones para generar una contraseña aleatoria</string>
 </resources>

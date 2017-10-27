@@ -17,6 +17,8 @@
     <string name="loadfile_delete_database_toast_message">S\'ha esborrat la base de dades %1$s</string>
     <string name="loadfile_create_database_toast_message">S\'ha creat la base de dades %1$s</string>
     <string name="loadfile_error_deleting_databases">No s\'ha pogut esborrar la base de dades</string>
+    <string name="loadfile_cretate_database_password_error">Les contrasenyes no són iguals on son massa curtes</string>
+    <string name="loadfile_cretate_database_database_name_error">El nom de la base de dades es massa curt</string>
 
     <!-- Common Strings -->
     <string name="password">Contrasenya</string>
@@ -26,7 +28,7 @@
     <string name="search_icon_title">Cerca</string>
     <string name="action_settings">Opcions</string>
     <string name="preferences_header_security">Seguretat</string>
-    <string name="loadfile_create_database_button">Crear</string>
+    <string name="loadfile_create_database_button">Crear base de dades</string>
 
     <!-- Permission Strings -->
     <string name="permission_denied">Sense el permís per guardar a disc, no es poden crear ni obrir bases de dades</string>
@@ -50,4 +52,7 @@
     <string name="generatepassword_lower">Minúscules</string>
     <string name="generatepassword_numbers">Números</string>
     <string name="generatedpassword_generated_password">Contrasenya</string>
+    <string name="generatepassword_use">Utilitza la contrasenya</string>
+    <string name="generatepassword_generate_dialog_message">Utilitza les opcions per a generar una contrasenya aleatoria</string>
+    <string name="generatepassword_generate">Generar contrasenya</string>
 </resources>
