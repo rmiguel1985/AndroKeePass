@@ -3,10 +3,10 @@ apply plugin: 'me.tatarka.retrolambda'
 apply from: 'coverage/jacoco.gradle'
 apply from: 'coverage/coveralls.gradle'
 
-def keePassVersion = "0.6.0"
+def keePassVersion = "0.6.1"
 def daggerVersion = '2.9'
 def injectAnnotationsVersion = '1.0'
-def butterKnifeVersion = '8.5.1'
+def butterKnifeVersion = '8.8.1'
 def supportLibraryVersion = '26.+'
 def rxJavaVersion = '1.1.9'
 def rxAndroidVersion = '1.2.1'
@@ -25,7 +25,7 @@ android {
     defaultConfig {
         applicationId "com.adictosalainformatica.androkeepass"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -62,6 +62,8 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "com.android.support:design:$supportLibraryVersion"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -113,4 +115,15 @@ dependencies {
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+
+    //RootBeer
+    compile 'com.scottyab:rootbeer-lib:0.0.6'
+
+
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
 }
