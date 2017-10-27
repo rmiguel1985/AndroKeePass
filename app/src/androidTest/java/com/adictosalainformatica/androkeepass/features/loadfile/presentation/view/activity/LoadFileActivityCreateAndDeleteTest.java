@@ -42,17 +42,21 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.adictosalainformatica.androkeepass.matchers.TestUtils.setProgress;
 import static com.adictosalainformatica.androkeepass.matchers.TestUtils.withRecyclerView;
 import static org.hamcrest.Matchers.not;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4.class)
-public class LoadFileActivityTest {
+public class LoadFileActivityCreateAndDeleteTest {
 
     @Rule
-    public ActivityTestRule<LoadFileActivity> activityRule = new ActivityTestRule<>(LoadFileActivity.class);
+    public ActivityTestRule<LoadFileActivity> activityRule =
+            new ActivityTestRule<>(LoadFileActivity.class);
     private Context context;
     private String databaseName = "01234";
+    private String databaseNameWithGeneratedPassword = "012345";
+    private String databasePassword = "01234";
 
     @Before
     public void setUp(){
@@ -68,9 +72,21 @@ public class LoadFileActivityTest {
     public void createDatabase_creates_expected_database() throws Exception {
         onView(withId(R.id.loadfile_button_create_file)).perform(click());
 
+        onView(withId(R.id.create_database_generate_button)).perform(click());
+
+        onView(withId(R.id.generate_password_length)).perform(setProgress(5));
+
+        onView(withId(R.id.generate_password_check_box_upper_case)).perform(click());
+        onView(withId(R.id.generate_password_check_box_lower_case)).perform(click());
+        onView(withId(R.id.generate_password_check_box_punctuation)).perform(click());
+        onView(withId(R.id.generate_password_check_box_numbers)).perform(click());
+
+        onView(withId(R.id.generate_password_button)).perform(click());
+
         onView(withHint(context.getString(R.string.loadfile_cretate_database_dialog_database))).perform(typeText(databaseName), closeSoftKeyboard());
-        onView(withHint(context.getString(R.string.password))).perform(typeText("1234"), closeSoftKeyboard());
-        onView(withHint(context.getString(R.string.repeat_password))).perform(typeText("1234"),
+        onView(withId(R.id.create_database_txt_password)).perform(typeText(databasePassword),
+                closeSoftKeyboard());
+        onView(withId(R.id.create_database_txt_password_repeat)).perform(typeText(databasePassword),
                 closeSoftKeyboard());
 
         onView(withText(context.getString(R.string.loadfile_create_database_button))).perform(click());
@@ -79,6 +95,8 @@ public class LoadFileActivityTest {
                 .inRoot(withDecorView(not(activityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
     }
+
+
 
     @Test
     public void deleteDatabase_deletes_expected_database() throws Exception {
