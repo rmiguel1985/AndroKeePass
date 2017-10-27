@@ -21,10 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.pin.view.PinLockPreferenceActivity"
-            android:label="@string/action_settings"
-            android:parentActivityName=".features.loadfile.presentation.view.activity.LoadFileActivity"
-            android:theme="@style/AppTheme" />
+            android:name=".features.loadfile.presentation.view.activity.CreateDatabaseActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/loadfile_create_file"/>
+        <activity
+            android:name=".utils.password.GeneratePasswordActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/generatepassword_title"/>
 
         <!-- Passcode Lock Activities -->
         <activity
@@ -36,9 +39,9 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".features.loadfile.presentation.view.activity.CreateDatabaseActivity"
-            android:theme="@style/DialogTheme" />
-        <activity android:name=".features.loadfile.presentation.view.activity.GeneratePasswordActivity"></activity>
+            android:name=".features.pin.view.PinLockPreferenceActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".features.loadfile.presentation.view.activity.LoadFileActivity"
+            android:theme="@style/AppTheme" />
     </application>
-
 </manifest>
