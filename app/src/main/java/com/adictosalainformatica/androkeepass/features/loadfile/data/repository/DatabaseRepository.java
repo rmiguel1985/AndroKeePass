@@ -17,7 +17,6 @@
 package com.adictosalainformatica.androkeepass.features.loadfile.data.repository;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 
 import rx.Observable;
 
@@ -25,5 +24,5 @@ public interface DatabaseRepository {
     Observable getAllDatabases();
     Observable createDatabase(String fileName, String password) throws FileNotFoundException;
     Observable deleteDatabase(String databaseName);
-    Observable deleteDatabase(List<String> databases);
+    /*Observable deleteDatabase(List<String> databases);*/
 }

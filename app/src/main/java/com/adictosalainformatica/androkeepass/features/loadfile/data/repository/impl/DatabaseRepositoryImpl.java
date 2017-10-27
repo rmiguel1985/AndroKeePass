@@ -16,7 +16,6 @@
 
 package com.adictosalainformatica.androkeepass.features.loadfile.data.repository.impl;
 
-import android.content.Context;
 import android.os.Environment;
 
 import com.adictosalainformatica.androkeepass.features.loadfile.data.repository.DatabaseRepository;
@@ -56,15 +55,14 @@ public class DatabaseRepositoryImpl implements DatabaseRepository{
     /**
      * Repository constructor
      *
-     * @param context
+     * @param storage
      */
-    public DatabaseRepositoryImpl(Context context) {
-        if (SimpleStorage.isExternalStorageWritable()) {
-            storage = SimpleStorage.getExternalStorage();
+    public DatabaseRepositoryImpl(Storage storage) {
+        this.storage = storage;
+
+        if (storage.getStorageType().equals(SimpleStorage.StorageType.EXTERNAL)) {
             path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + DEFAULT_FOLDER + "/";
-        }
-        else {
-            storage = SimpleStorage.getInternalStorage(context);
+        }else {
             path = Environment.getRootDirectory().getAbsolutePath() + "/" + DEFAULT_FOLDER + "/";
         }
 
@@ -152,7 +150,7 @@ public class DatabaseRepositoryImpl implements DatabaseRepository{
      * @param databases
      * @return true if all databases are deleted, otherwise error
      */
-    @Override
+    /*@Override
     public Observable deleteDatabase(List<String> databases) {
         return Observable.create(subscriber -> {
 
@@ -168,7 +166,7 @@ public class DatabaseRepositoryImpl implements DatabaseRepository{
             subscriber.onNext(true);
             subscriber.onCompleted();
         });
-    }
+    }*/
 
     /**
      * Get all recent databases
@@ -195,6 +193,4 @@ public class DatabaseRepositoryImpl implements DatabaseRepository{
                 }
         });
     }
-
-
 }

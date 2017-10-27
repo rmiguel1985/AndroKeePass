@@ -20,6 +20,8 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 
 import com.adictosalainformatica.androkeepass.features.loadfile.domain.model.Database;
+import com.sromku.simple.storage.SimpleStorage;
+import com.sromku.simple.storage.Storage;
 
 import org.junit.After;
 import org.junit.Before;
@@ -48,7 +50,7 @@ public class DatabaseRepositoryImplTest {
     @Before
     public void setUp() throws Exception {
         context = InstrumentationRegistry.getContext();
-        databaseRepository = new DatabaseRepositoryImpl(context);
+        databaseRepository = new DatabaseRepositoryImpl(initializeStorage(context));
 
         RxAndroidPlugins.getInstance().registerSchedulersHook(new RxAndroidSchedulersHook() {
             @Override
@@ -56,6 +58,19 @@ public class DatabaseRepositoryImplTest {
                 return Schedulers.immediate();
             }
         });
+    }
+
+    private Storage initializeStorage(Context context){
+        Storage storage;
+
+        if (SimpleStorage.isExternalStorageWritable()) {
+            storage = SimpleStorage.getExternalStorage();
+        }
+        else {
+            storage = SimpleStorage.getInternalStorage(context);
+        }
+
+        return storage;
     }
 
     @After
