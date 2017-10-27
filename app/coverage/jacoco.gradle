@@ -18,6 +18,8 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
     def fileFilter = ['**/R.class',
                       '**/R$*.class',
                       '**/BuildConfig.*',
+                      '**/*$ViewInjector*.*',
+                      '**/*$ViewBinder*.*',
                       '**/Manifest*.*',
                       'android/**/*.*',
                       '**/Lambda$*.class', //Retrolambda
@@ -25,6 +27,8 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
                       '**/*Lambda.class',
                       '**/*Lambda*.class',
                       '**/*Lambda*.*',
+                      '**/*$Lambda$*.*',
+                      '**/*$lambda$*.*',
                       '**/*Builder.*',
                       '**/*_MembersInjector.class',  //Dagger2 generated code
                       '**/*_MembersInjector*.*',  //Dagger2 generated code
