@@ -37,6 +37,24 @@ public class DialogUtils {
     }
 
     /**
+     * Show info dialog
+     *
+     * @param context
+     * @param message
+     */
+    public static void createInfoDialog(Context context, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setPositiveButton(context.getString(R.string.ok),
+                (dialog, which) -> dialog.dismiss());
+        builder.setTitle("Info");
+        builder.setMessage(message);
+
+        AlertDialog errorDialog = builder.create();
+        errorDialog.show();
+    }
+
+    /**
      * Show error dialog
      *
      * @param context Activity context
@@ -89,12 +107,16 @@ public class DialogUtils {
 
         final EditText passwordInput = new EditText(context);
 
-        LinearLayout layout = new LinearLayout(context.getApplicationContext());
+        LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(45, 0, 45, 0);
 
         passwordInput.setHint(context.getString(R.string.password));
         passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        layout.addView(passwordInput);
+        layout.addView(passwordInput, params);
+
 
         builder.setView(layout);
         builder.setPositiveButton(context.getString(R.string.ok), (dialog, which) -> {
